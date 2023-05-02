@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    default: ysql
+  application:
+    name: yb-boot-testing
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+  datasource:
+    hikari:
+      maximum-pool-size: ${HIKARI_POOL_SIZE:20}
+      username: ${DB_USER:yugabyte}
+      password: ${DB_PASSWORD:}
+      schema: ${DB_SCHEMA:nexvid_us}
+  flyway:
+    user: ${FLYWAY_USER:yugabyte}
+    password: ${FLYWAY_PASSWORD:}
+    default-schema: ${DB_SCHEMA:nexvid_us} # this will auto create the schema
+
+logging.level:
+  # Log Hikari Config and pool status...
+  com.zaxxer.hikari.HikariPool: ${HIKARI_LOG_LEVEL:INFO}
+  com.zaxxer.hikari.HikariConfig: ${HIKARI_CONFIG_LOG_LEVEL:DEBUG}

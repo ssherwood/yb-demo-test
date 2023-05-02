@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:yugabytedb://127.0.0.1:5433/yugabyte?load-balance=true
+    driver-class-name: com.yugabyte.Driver
+    hikari:
+      transaction-isolation: ${YB_DB_ISOLATION:TRANSACTION_READ_COMMITTED}
+      data-source-properties:
+        additionalEndpoints: ${YB_DB_ADDITIONAL_ENDPOINTS:127.0.0.2,127.0.0.3}
+        topologyKeys: ${YB_DB_TOPOLOGY_KEYS:"cloud1.datacenter1.rack1"}
+        prepareThreshold: ${YB_DB_PREPARE_THRESHOLD:1}
+
+logging.level:
+  # Log YugabyteDB JDBC driver connection details with DEBUG
+  # TRACE provides more info of Parse/Bind steps via com.yugabyte.core.v3.QueryExecutorImpl
+  com.yugabyte: ${YB_LOG_LEVEL:INFO}
+  com.yugabyte.Driver: ${YB_DB_LOG_LEVEL:TRACE}

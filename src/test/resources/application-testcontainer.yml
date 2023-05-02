@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:tc:yugabyte:2.16.3.0-b43:///yugabyte
+    username: yugabyte
+    password: yugabyte
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate # validate during testing
+  flyway:
+    clean-disabled: false # allows flyway clean command to work, never do this in PROD
+    username: yugabyte
+    password: yugabyte
+# see: https://www.testcontainers.org/modules/databases/jdbc/
+# needs more config setting is < 2.3.0
