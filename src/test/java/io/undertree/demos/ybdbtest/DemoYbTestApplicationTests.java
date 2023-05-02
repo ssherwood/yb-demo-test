@@ -7,7 +7,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 @SpringBootTest
-@ActiveProfiles("test")
+@ActiveProfiles("testcontainer")
 class DemoYbTestApplicationTests {
 
 	// this is slow because it triggers flyway and the test container stuff
